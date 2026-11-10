@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#083B82">
+  <meta name="description" content="Registro voti personale per studenti delle scuole superiori. I dati restano sul tuo dispositivo.">
+  <title>Registro voti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainScroll">Vai al contenuto</a>
+
+  <div class="app-shell" id="appShell">
+    <header class="app-header" id="appHeader">
+      <div class="header-inner">
+        <div class="header-top">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 28 28" width="23" height="23" aria-hidden="true">
+                <path d="M7 7.5h9.2a4.8 4.8 0 0 1 0 9.6H11v5.4H7V7.5Zm4 3.5v2.6h5.1a1.3 1.3 0 0 0 0-2.6H11Z" fill="currentColor"/>
+                <circle cx="21" cy="7" r="2.6" fill="#8EC5FF"/>
+              </svg>
+            </span>
+            <div class="brand-copy">
+              <span class="brand-title" id="brandTitle">Registro voti</span>
+              <span class="brand-subtitle" id="brandSubtitle">Il tuo anno, in chiaro</span>
+            </div>
+          </div>
+          <button class="icon-button" id="settingsButton" type="button" aria-label="Apri impostazioni">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .95 1.7 1.7 0 0 0-.1.65v.1H9.9v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.88.34l-.06.06L4 16.94l.06-.06A1.7 1.7 0 0 0 4.4 15a1.7 1.7 0 0 0-.95-1 1.7 1.7 0 0 0-.65-.1h-.1V9.9h.1A1.7 1.7 0 0 0 4.4 8.8a1.7 1.7 0 0 0-.34-1.88L4 6.86 6.86 4l.06.06A1.7 1.7 0 0 0 8.8 4.4a1.7 1.7 0 0 0 1-.95 1.7 1.7 0 0 0 .1-.65v-.1h4v.1A1.7 1.7 0 0 0 15 4.4a1.7 1.7 0 0 0 1.88-.34l.06-.06L19.8 6.86l-.06.06A1.7 1.7 0 0 0 19.4 8.8a1.7 1.7 0 0 0 .95 1 1.7 1.7 0 0 0 .65.1h.1v4h-.1a1.7 1.7 0 0 0-1.6 1.1Z"></path>
+            </svg>
+            <svg class="back-icon" viewBox="0 0 24 24" width="23" height="23" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="header-summary" id="headerSummary">
+          <div class="header-average-block">
+            <span class="header-kicker">Media ponderata</span>
+            <strong class="header-average" id="headerAverage">—</strong>
+            <span class="header-goal" id="headerGoal" hidden></span>
+          </div>
+          <div class="header-context" id="headerContext">
+            <span id="headerVoteCount">0 voti</span>
+            <span class="header-dot" aria-hidden="true"></span>
+            <span id="headerSubjectCount">0 materie</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main" id="mainScroll" tabindex="-1">
+      <div class="view-stage" id="viewStage"></div>
+    </main>
+
+    <nav class="bottom-nav" id="bottomNav" aria-label="Navigazione principale">
+      <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+      <button class="nav-item" type="button" data-nav="home" aria-current="page">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3.5 10.5 8.5-7 8.5 7"></path>
+          <path d="M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"></path>
+        </svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="grades">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="3.5" width="16" height="17" rx="3"></rect>
+          <path d="M8 8h8M8 12h8M8 16h5"></path>
+        </svg>
+        <span>Voti</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="analysis">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19V5M4 19h16"></path>
+          <path d="m7.5 15 3.2-3.6 3 2.1L20 6.5"></path>
+          <path d="M17 6.5h3v3"></path>
+        </svg>
+        <span>Analisi</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="simulate">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="3" width="14" height="18" rx="3"></rect>
+          <path d="M8.5 7.5h7M8.5 12h2M13.5 12h2M8.5 16h2M13.5 16h2"></path>
+        </svg>
+        <span>Simula</span>
+      </button>
+    </nav>
+
+    <button class="fab" id="fab" type="button" aria-label="Aggiungi voto" aria-haspopup="true" aria-expanded="false">
+      <span class="fab-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+      </span>
+    </button>
+    <div class="fab-menu" id="fabMenu" hidden>
+      <button type="button" class="fab-mini fab-mini-subject" data-action="add-subject">
+        <span class="fab-mini-label">Materia</span>
+        <span class="fab-mini-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="sr-only">Aggiungi materia</span>
+      </button>
+      <button type="button" class="fab-mini fab-mini-grade" data-action="add-grade">
+        <span class="fab-mini-label">Voto</span>
+        <span class="fab-mini-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="sr-only">Aggiungi voto</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sheet-overlay" id="sheetOverlay" hidden>
+    <div class="sheet-backdrop" data-action="close-sheet"></div>
+    <section class="bottom-sheet" id="bottomSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+      <div class="sheet-drag-zone" id="sheetDragZone">
+        <span class="sheet-handle" aria-hidden="true"></span>
+      </div>
+      <header class="sheet-header">
+        <div>
+          <p class="eyebrow" id="sheetEyebrow">Nuovo</p>
+          <h2 id="sheetTitle">Aggiungi voto</h2>
+        </div>
+        <button class="icon-button light" type="button" data-action="close-sheet" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+      <div class="sheet-body" id="sheetBody"></div>
+      <footer class="sheet-footer" id="sheetFooter"></footer>
+    </section>
+  </div>
+
+  <div class="success-overlay" id="successOverlay" aria-hidden="true">
+    <span class="success-disc">
+      <svg viewBox="0 0 56 56" width="54" height="54" aria-hidden="true">
+        <circle class="success-ring" cx="28" cy="28" r="23" fill="none"></circle>
+        <path class="success-check" d="M16.5 28.5 24.3 36 40 19.5" fill="none"></path>
+      </svg>
+    </span>
+  </div>
+
+  <div class="toast-region" id="toastRegion" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <dialog class="confirm-dialog" id="confirmDialog" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
+    <form method="dialog" class="confirm-card">
+      <span class="confirm-icon" id="confirmIcon" aria-hidden="true"></span>
+      <h2 id="confirmTitle">Conferma</h2>
+      <p id="confirmMessage"></p>
+      <div class="confirm-actions">
+        <button class="button ghost" id="confirmCancel" type="button">Annulla</button>
+        <button class="button danger" id="confirmOk" type="button">Conferma</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="onboarding" id="onboarding" role="dialog" aria-modal="true" aria-labelledby="onboardingHeading" hidden>
+    <div class="onboarding-top">
+      <div class="onboarding-logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="29" height="29" fill="none">
+          <path d="M8 7h10.5a5.5 5.5 0 0 1 0 11H13v7H8V7Z" fill="currentColor"/>
+          <circle cx="24" cy="8" r="3" fill="#8EC5FF"/>
+        </svg>
+      </div>
+      <button type="button" class="onboarding-skip" id="onboardingSkip">Salta</button>
+    </div>
+    <div class="onboarding-content" id="onboardingContent"></div>
+    <div class="onboarding-bottom">
+      <div class="onboarding-dots" id="onboardingDots" aria-hidden="true"></div>
+      <div class="onboarding-actions" id="onboardingActions"></div>
+    </div>
+  </div>
+
+  <input type="file" id="importInput" accept="application/json,.json" hidden>
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
