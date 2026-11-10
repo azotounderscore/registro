@@ -362,7 +362,7 @@ svg { display: block; }
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
   min-height: calc(var(--nav-height) + var(--bottom-safe));
-  padding: 4px 8px calc(4px + var(--bottom-safe));
+  padding: 4px 8px calc(60px + var(--bottom-safe));
   background: rgba(255, 255, 255, .97);
   border-top: 1px solid var(--line);
   box-shadow: 0 -6px 20px rgba(26, 47, 79, .035);
@@ -416,7 +416,7 @@ svg { display: block; }
   position: absolute;
   z-index: 35;
   right: max(18px, calc((100% - var(--app-max)) / 2 + 18px));
-  bottom: calc(var(--nav-height) + var(--bottom-safe) + 16px);
+  bottom: calc(var(--nav-height) + var(--bottom-safe) + 60px);
   width: 58px;
   height: 58px;
   display: grid;
